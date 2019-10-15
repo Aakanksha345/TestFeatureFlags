@@ -30,9 +30,10 @@ namespace TestFeatureFlags
     WebHost.CreateDefaultBuilder(args)
         .ConfigureAppConfiguration((hostingContext, config) =>
         {
+            
             var settings = config.Build();
             config.AddAzureAppConfiguration(options => {
-                options.Connect(settings["ConnectionStrings:AppConfig"])
+                options.Connect(settings["AzureAppConfigurationEndpoint"])
                        .UseFeatureFlags();
             });
         })
